@@ -4,63 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Телефонная книга</title>
-  <style>
-      form {
-        position: relative;
-        border: 1px solid;
-        width: 320px;
-        margin-bottom: 20px;
-        background-color: silver;
-      }
-
-      li {
-        list-style-type: none;
-        margin-bottom: 5px;
-      }
-
-      .data-list li input {
-        width: 200px;
-      }
-
-      .data-list li {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .container {
-        display: flex;
-      }
-
-      .phone-book {
-        border-collapse: collapse;
-        border: 1px solid;
-      }
-
-      .buttun-del {
-        background-color: red;
-      }
-
-      /* Прячем чекбокс */
-      input[type=checkbox] {
-        display: none;
-      }
-
-      input[type=checkbox]:checked + label:before {
-        content: "★";
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-        font-size: 15px;
-        color: #000;
-        text-align: center;
-        line-height: 15px;
-        position: absolute;
-        top: 4px;
-      }
-
-      .checkbox {
-        position: relative;
-      }
-  </style>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <!-- <h1>Телефонная книга</h1> -->
