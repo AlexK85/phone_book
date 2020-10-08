@@ -48,6 +48,10 @@
                         'name' => 'Еще что-то',
                         'isDone' => true,
                     ],
+                    [
+                        'name' => 'Посмотреть Криминальную Россию',
+                        'isDone' => false,
+                    ],
                 ];
 
                 foreach ($tasks as $task) {
