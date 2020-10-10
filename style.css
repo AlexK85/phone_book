@@ -52,18 +52,26 @@ li {
   /*   border: 1px solid; */
 }
 
-.buttun-del {
+.button-del {
   background-color: red;
 }
 
-/* Прячем чекбокс */
+/* .row {
+  display: block;
+} */
+
+.row-clear {
+  /* display: none; */
+  background-color: #dbcec7;
+}
+
+/* Прячем чекбокс  */
 input[type="checkbox"] {
   display: none;
 }
 
 input[type="checkbox"]:checked + label:before {
   content: "★";
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   font-size: 15px;
   color: #000;
   text-align: center;

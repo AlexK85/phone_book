@@ -1,3 +1,46 @@
+<?php
+  header("Content-type: text/html; charset=utf-8");
+  error_reporting(-1);
+
+  require_once "func.php";
+  
+  $contacts = [
+    [
+      'number' => '1',
+      'name' => 'Александр',
+      'subname' => 'Курганский',
+      'age' => '16.10.1985',
+      'phone' => '+79045327579',
+      'favorite' => false,
+    ],
+    [
+      'number' => '2',
+      'name' => 'Вася',
+      'subname' => 'Пупкин',
+      'age' => '16.10.1985',
+      'phone' => '+79045327579',
+      'favorite' => true,
+    ],
+    [
+      'number' => '3',
+      'name' => 'Гена',
+      'subname' => 'Гешка',
+      'age' => '16.10.1985',
+      'phone' => '+79045327579',
+      'favorite' => true,
+    ],
+    [
+      'number' => '4',
+      'name' => 'Антоха',
+      'subname' => 'Хотеев',
+      'age' => '16.10.1985',
+      'phone' => '+79045327579',
+      'favorite' => true,
+    ]
+  ];
+
+  ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,9 +50,10 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
   <!-- <h1>Телефонная книга</h1> -->
 <div class="container">
-    <form class="form" action="" method="">
+    <form class="form" action="index.php" method="post">
       <ul class="data-list">
         <li>
           <label for="name">Имя:</label> 
@@ -42,25 +86,20 @@
               <th>Дата рождения</th>
               <th>Номер телефона</th>
               <th>Избранное</th>
-              <th>Удалить/Править</th>
+              <th>Править</th>
+              <th>Удалить</th>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>Александр</td>
-              <td>Курганский</td>
-              <td>16.10.1985</td>
-              <td>+79045327579</td>
-              <td>
-                <div class="checkbox">
-                  <input id="check1" type="checkbox" name="check" value="check1">
-                  <label for="check1">☆</label>
-                </div>
-              </td>
-              <td>
-                <button class="buttun-del" type="button" value="Добавить контакт">Удалить</button>
-                <button type="edit" name="edit">Править</button>
-              </td>
-            </tr>
+            <?php
+              $favoriteContacts = array_filter($contacts, function($contact){
+                return $contact['favorite'];
+              });
+
+              foreach($favoriteContacts as $contact) {
+                // if ($contact['favorite']) {
+                  echo renderContact($contact);
+                // }
+              }
+            ?>
         </table>
     </div>
 </div>
@@ -75,26 +114,16 @@
           <th>Дата рождения</th>
           <th>Номер телефона</th>
           <th>Избранное</th>
-          <th>Удалить/Править</th>
+          <th>Править</th>
+          <th>Удалить</th>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>Александр</td>
-          <td>Курганский</td>
-          <td>16.10.1985</td>
-          <td>+79045327579</td>
-          <td>
-            <div class="checkbox">
-              <input id="check2" type="checkbox" name="check" value="check2">
-              <label for="check2">☆</label>
-            </div>
-          </td>
-          <td>
-            <button class="buttun-del" type="button" value="Добавить контакт">Удалить</button>
-            <button type="edit" name="edit">Править</button>
-          </td>
-        </tr>
+        <?php
+          foreach($contacts as $contact) {
+            echo renderContact($contact);
+          }
+        ?> 
     </table>
 </div>
+
 </body>
 </html>
