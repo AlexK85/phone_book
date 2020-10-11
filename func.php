@@ -6,7 +6,7 @@ function renderContact($contact) {
             <td>' . $contact['number'] . '</td> 
             <td>' . $contact['name'] . '</td>
             <td>' . $contact['subname'] . '</td>
-            <td>' . $contact['age'] . '</td>
+            <td>' . $contact['birthday'] . '</td>
             <td>' . $contact['phone'] . '</td>
             <td>' . renderFavorite($contact['favorite']) . '</td>
             <td>

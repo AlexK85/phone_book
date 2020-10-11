@@ -2,6 +2,7 @@
   header("Content-type: text/html; charset=utf-8");
   error_reporting(-1);
 
+  require_once "db.php";
   require_once "func.php";
   require_once "add_contact.php";
   
@@ -10,7 +11,7 @@
       'number' => '1',
       'name' => 'Александр',
       'subname' => 'Курганский',
-      'age' => '16.10.1985',
+      'birthday' => '16.10.1985',
       'phone' => '+79045327579',
       'favorite' => false,
     ],
@@ -18,7 +19,7 @@
       'number' => '2',
       'name' => 'Вася',
       'subname' => 'Пупкин',
-      'age' => '16.10.1985',
+      'birthday' => '16.10.1985',
       'phone' => '+79045327579',
       'favorite' => true,
     ],
@@ -26,7 +27,7 @@
       'number' => '3',
       'name' => 'Гена',
       'subname' => 'Гешка',
-      'age' => '16.10.1985',
+      'birthday' => '16.10.1985',
       'phone' => '+79045327579',
       'favorite' => true,
     ],
@@ -34,7 +35,7 @@
       'number' => '4',
       'name' => 'Антоха',
       'subname' => 'Хотеев',
-      'age' => '16.10.1985',
+      'birthday' => '16.10.1985',
       'phone' => '+79045327579',
       'favorite' => true,
     ]
@@ -54,8 +55,6 @@
 
   <!-- <h1>Телефонная книга</h1> -->
 <div class="container">
-    
-    
     <div class="container-favorite">
           <h2>Избранные</h2>
         <table class="phone-book favorites" border="1">
@@ -63,7 +62,7 @@
               <th>№</th>
               <th>Имя</th>
               <th>Фамилия</th>
-              <th>Дата рождения</th>
+              <th>День рождения</th>
               <th>Номер телефона</th>
               <th>Избранное</th>
               <th>Править</th>
@@ -91,7 +90,7 @@
           <th>№</th>
           <th>Имя</th>
           <th>Фамилия</th>
-          <th>Дата рождения</th>
+          <th>День рождения</th>
           <th>Номер телефона</th>
           <th>Избранное</th>
           <th>Править</th>
