@@ -1,9 +1,10 @@
 <?php
 
-function renderContact($contact) {
+function renderContact($contact)
+{
 
   return '<tr class="row-clear">
-            <td>' . $contact['number'] . '</td> 
+            <td>' . $contact['id'] . '</td> 
             <td>' . $contact['name'] . '</td>
             <td>' . $contact['subname'] . '</td>
             <td>' . $contact['birthday'] . '</td>
@@ -16,12 +17,13 @@ function renderContact($contact) {
               <button class="button-del" value="Удалить контакт">Удалить</button>
             </td>
           </tr>';
-} 
+}
 
-function renderFavorite($isFavorite) {
+function renderFavorite($isFavorite)
+{
   $checked = '';
   if ($isFavorite) {
-    $checked = 'checked'; 
+    $checked = 'checked';
   }
   return '<div class="checkbox">
             <input id="check" type="checkbox" name="check" value="check"' . $checked . '>
