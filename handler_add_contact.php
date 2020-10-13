@@ -16,7 +16,8 @@ $insert = "INSERT INTO contacts (name, subname, birthday, phone) VALUES ('$name'
 $res_insert = mysqli_query($connection, $insert);
 
 if ($res_insert) {
-    echo 'OK';
+    //редирект 
+    header('Location: /phone_book/index.php', true, 303);
 } else {
     echo 'Error';
     echo mysqli_error($connection);

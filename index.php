@@ -8,7 +8,7 @@ require_once "func.php";
 $connection = connectDB();
 $sql = "SELECT * FROM contacts";
 $result = $connection->query($sql);
-// В $contacts будет аасоциативный массив
+// В $contacts будет аcсоциативный массив
 $contacts = $result->fetch_all(MYSQLI_ASSOC);
 
 
@@ -94,7 +94,7 @@ $contacts = $result->fetch_all(MYSQLI_ASSOC);
   <div class="container-contacts">
     <div class="container-title-add_contact">
       <h2>Контакты</h2>
-      <button class="add_contact">Добавить контакт</button>
+      <a class="add_contact" href="">Добавить контакт</a>
     </div>
     <table class="phone-book" border="1">
       <tr>
