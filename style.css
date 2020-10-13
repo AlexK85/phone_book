@@ -90,5 +90,17 @@ input[type="checkbox"]:checked + label:before {
 }
 
 .add_contact {
+  color: #000;
+  /* vertical-align: middle; */
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
   background-color: silver;
+  border: 1px solid;
+}
+
+.add_contact:hover {
+  background-color: rgb(160, 148, 148);
+
 }

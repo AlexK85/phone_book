@@ -94,7 +94,7 @@ $contacts = $result->fetch_all(MYSQLI_ASSOC);
   <div class="container-contacts">
     <div class="container-title-add_contact">
       <h2>Контакты</h2>
-      <a class="add_contact" href="">Добавить контакт</a>
+      <a class="add_contact" href="http://my_progect_php.com/phone_book/form_add_contact.php">Добавить контакт</a>
     </div>
     <table class="phone-book" border="1">
       <tr>
