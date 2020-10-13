@@ -86,6 +86,9 @@ input[type="checkbox"]:checked + label:before {
 
 .container-title-add_contact {
   display: flex;
-  flex-direction: row;
-  background-color: red;
+  justify-content: space-between;
+}
+
+.add_contact {
+  background-color: silver;
 }
