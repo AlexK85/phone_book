@@ -14,7 +14,7 @@ function renderContact($contact)
               <button name="edit">Править</button>
             </td>
             <td>
-              <button class="button-del" value="Удалить контакт">Удалить</button>
+              </button class="button-del type="hidden" value="Удалить контакт">Удалить</button>
             </td>
           </tr>';
 }

@@ -11,42 +11,6 @@ $result = $connection->query($sql);
 // В $contacts будет аcсоциативный массив
 $contacts = $result->fetch_all(MYSQLI_ASSOC);
 
-
-// $contacts = [
-//   [
-//     'number' => '1',
-//     'name' => 'Александр',
-//     'subname' => 'Курганский',
-//     'birthday' => '16.10.1985',
-//     'phone' => '+79045327579',
-//     'favorite' => false,
-//   ],
-//   [
-//     'number' => '2',
-//     'name' => 'Вася',
-//     'subname' => 'Пупкин',
-//     'birthday' => '16.10.1985',
-//     'phone' => '+79045327579',
-//     'favorite' => true,
-//   ],
-//   [
-//     'number' => '3',
-//     'name' => 'Гена',
-//     'subname' => 'Гешка',
-//     'birthday' => '16.10.1985',
-//     'phone' => '+79045327579',
-//     'favorite' => true,
-//   ],
-//   [
-//     'number' => '4',
-//     'name' => 'Антоха',
-//     'subname' => 'Хотеев',
-//     'birthday' => '16.10.1985',
-//     'phone' => '+79045327579',
-//     'favorite' => true,
-//   ]
-// ];
-
 ?>
 
 <!DOCTYPE html>

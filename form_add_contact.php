@@ -1,7 +1,6 @@
 <?php
 
 if (!empty($_POST)) {
-  // save_contacts();
   header("Location: {$_SERVER['PHP_SELF']}");
   exit;
 }

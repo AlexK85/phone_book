@@ -1,6 +1,8 @@
 <?php
 require_once "db.php";
 
+// Обработчик 
+
 // Вызов функции подключения к серверу БД
 $connection = connectDB();
 
@@ -25,4 +27,3 @@ if ($res_insert) {
 //Закрываем подключение
 // mysqli_close($db);
 
-// Обработчик 
