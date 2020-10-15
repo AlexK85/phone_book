@@ -5,3 +5,4 @@ function connectDB() {
     if (!$db) die(mysqli_connect_error());
     return $db;
 }
+

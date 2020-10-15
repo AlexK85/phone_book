@@ -14,7 +14,7 @@ function renderContact($contact)
               <button name="edit">Править</button>
             </td>
             <td>
-              </button class="button-del type="hidden" value="Удалить контакт">Удалить</button>
+              <a href="delete_contacts.php?id=' . $contact['id'] . '" class="button-del">Удалить</a>
             </td>
           </tr>';
 }
@@ -25,8 +25,10 @@ function renderFavorite($isFavorite)
   if ($isFavorite) {
     $checked = 'checked';
   }
-  return '<div class="checkbox">
-            <input id="check" type="checkbox" name="check" value="check"' . $checked . '>
-            <label for="check">☆</label>
-          </div>';
+  return '<a href="favorite_add_contact.php?favorite=1">
+            <div class="checkbox">
+              <input id="check" type="checkbox" name="check" value="check"' . $checked . '>
+              <label for="check">☆</label>
+            </div>
+          </a>';
 }
