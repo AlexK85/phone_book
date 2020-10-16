@@ -41,6 +41,7 @@ $contacts = $result->fetch_all(MYSQLI_ASSOC);
           <th>Удалить</th>
         </tr>
         <?php
+        
         $favoriteContacts = array_filter($contacts, function ($contact) {
           return $contact['favorite'];
         });

@@ -9,7 +9,7 @@ function renderContact($contact)
             <td>' . $contact['subname'] . '</td>
             <td>' . $contact['birthday'] . '</td>
             <td>' . $contact['phone'] . '</td>
-            <td>' . renderFavorite($contact['favorite']) . '</td>
+            <td>' . renderLinkFavorite((bool)$contact['favorite'], $contact['id']) . '</td>
             <td>
               <button name="edit">Править</button>
             </td>
@@ -19,16 +19,12 @@ function renderContact($contact)
           </tr>';
 }
 
-function renderFavorite($isFavorite)
+function renderLinkFavorite($isFavorite, $id)
 {
-  $checked = '';
   if ($isFavorite) {
-    $checked = 'checked';
+    $link = '<a href="favorite_add_contact.php?favorite=0&id=' . $id . '">⭐️</a>';
+  } else {
+    $link = '<a href="favorite_add_contact.php?favorite=1&id=' . $id . '">☆</a>';
   }
-  return '<a href="favorite_add_contact.php?favorite=1">
-            <div class="checkbox">
-              <input id="check" type="checkbox" name="check" value="check"' . $checked . '>
-              <label for="check">☆</label>
-            </div>
-          </a>';
+  return $link;
 }

@@ -1,14 +1,15 @@
 <?php
 
-if (!isset($_GET['favorite'])) {
+if (!isset($_GET['favorite']) || !isset($_GET['id'])) {
     // 
-    die('Не установлен параметр favorite');
+    die('Не установлены параметры');
 }
 
 // Создаём переменную $id
 $favorite = $_GET['favorite'];
-var_dump($favorite);
-die;
+$id = $_GET['id'];
+// var_dump($favorite);
+// die;
 
 // Подключаем файл с функцией подключения к БД
 require_once "db.php";
@@ -17,13 +18,13 @@ require_once "db.php";
 $connection = connectDB();
 
 // Запрос на удаление данных
-$update = "UPDATE contacts SET favorite = $favorite";
+$update = "UPDATE contacts SET favorite = $favorite WHERE id = $id";
 $res_update = mysqli_query($connection, $update);
 
 
 if ($res_update) {
-   //редирект 
-   header('Location: /phone_book/index.php', true, 303);
+    //редирект 
+    header('Location: /phone_book/index.php', true, 303);
 } else {
     echo 'Error';
     echo mysqli_error($connection);
