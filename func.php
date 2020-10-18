@@ -11,7 +11,7 @@ function renderContact($contact)
             <td>' . $contact['phone'] . '</td>
             <td>' . renderLinkFavorite((bool)$contact['favorite'], $contact['id']) . '</td>
             <td>
-              <button name="edit">Править</button>
+               <a class="edit" href="updated_data.php?id=' . $contact['id'] . '">Изменить</a>
             </td>
             <td>
               <a href="delete_contacts.php?id=' . $contact['id'] . '" class="button-del">Удалить</a>
@@ -22,9 +22,9 @@ function renderContact($contact)
 function renderLinkFavorite($isFavorite, $id)
 {
   if ($isFavorite) {
-    $link = '<a href="favorite_add_contact.php?favorite=0&id=' . $id . '">⭐️</a>';
+    $link = '<a class="favorite" href="favorite_add_contact.php?favorite=0&id=' . $id . '">⭐️</a>';
   } else {
-    $link = '<a href="favorite_add_contact.php?favorite=1&id=' . $id . '">☆</a>';
+    $link = '<a class="favorite" href="favorite_add_contact.php?favorite=1&id=' . $id . '">☆</a>';
   }
   return $link;
 }

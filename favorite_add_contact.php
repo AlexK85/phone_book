@@ -18,6 +18,7 @@ require_once "db.php";
 $connection = connectDB();
 
 // Запрос на удаление данных
+// UPDATE - обновить, SET - установлен, WHERE - где.
 $update = "UPDATE contacts SET favorite = $favorite WHERE id = $id";
 $res_update = mysqli_query($connection, $update);
 
