@@ -75,6 +75,7 @@ $contacts = $result->fetch_all(MYSQLI_ASSOC);
       </tr>
       <?php
           $count = 1;
+          // коммент
           foreach ($contacts as $contact) {
           echo renderContact($contact, $count++);
           }
