@@ -8,8 +8,6 @@ if (!isset($_GET['favorite']) || !isset($_GET['id'])) {
 // Создаём переменную $id
 $favorite = $_GET['favorite'];
 $id = $_GET['id'];
-// var_dump($favorite);
-// die;
 
 // Подключаем файл с функцией подключения к БД
 require_once "db.php";

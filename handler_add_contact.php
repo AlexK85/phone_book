@@ -11,10 +11,23 @@ $name = $_POST['name'];
 $subname = $_POST['subname'];
 $birthday = $_POST['birthday'];
 $phone = $_POST['phone'];
+// $to = sprintf(
+//     "%s (%s) %s-%s-%s",
+//     substr($phone, 0, 1),
+//     substr($phone, 1, 3),
+//     substr($phone, 4, 3),
+//     substr($phone, 7, 2),
+//     substr($phone, 9)
+// );
+// echo $to;
+
 
 // Запрос на добавление данных
 $insert = "INSERT INTO contacts (name, subname, birthday, phone) VALUES ('$name', '$subname', '$birthday', '$phone')";
 $res_insert = mysqli_query($connection, $insert);
+
+// $update = "UPDATE contacts SET id = 'id' WHERE id = '$id';
+// $res_update = mysqli_query($connection, $update);
 
 if ($res_insert) {
     //редирект 
@@ -26,4 +39,3 @@ if ($res_insert) {
 
 //Закрываем подключение
 // mysqli_close($db);
-

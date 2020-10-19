@@ -41,14 +41,15 @@ $contacts = $result->fetch_all(MYSQLI_ASSOC);
           <th>Удалить</th>
         </tr>
         <?php
-        
+
         $favoriteContacts = array_filter($contacts, function ($contact) {
           return $contact['favorite'];
         });
 
+        $count = 1;
         foreach ($favoriteContacts as $contact) {
           // if ($contact['favorite']) {
-          echo renderContact($contact);
+          echo renderContact($contact, $count++);
           // }
         }
         ?>
@@ -73,9 +74,10 @@ $contacts = $result->fetch_all(MYSQLI_ASSOC);
         <th>Удалить</th>
       </tr>
       <?php
-      foreach ($contacts as $contact) {
-        echo renderContact($contact);
-      }
+          $count = 1;
+          foreach ($contacts as $contact) {
+          echo renderContact($contact, $count++);
+          }
       ?>
     </table>
   </div>

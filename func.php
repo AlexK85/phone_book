@@ -1,10 +1,10 @@
 <?php
 
-function renderContact($contact)
+function renderContact($contact, $number)
 {
 
   return '<tr class="row-clear">
-            <td>' . $contact['id'] . '</td> 
+            <td>' . $number . '</td> 
             <td>' . $contact['name'] . '</td>
             <td>' . $contact['subname'] . '</td>
             <td>' . $contact['birthday'] . '</td>

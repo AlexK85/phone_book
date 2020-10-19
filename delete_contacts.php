@@ -1,7 +1,6 @@
 <?php
 
-if (!isset($_GET['id'])) {
-    // 
+if (!isset($_GET['id'])) { 
     die('Не установлен параметр id');
 }
 
