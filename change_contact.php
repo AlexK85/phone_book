@@ -1,25 +1,20 @@
 <?php
 
-if (!isset($_GET['favorite']) || !isset($_GET['id'])) {
-    // 
-    die('Не установлены параметры');
-}
-
-// Создаём переменную $id
-$favorite = $_GET['favorite'];
-$id = $_GET['id'];
-
 // Подключаем файл с функцией подключения к БД
 require_once "db.php";
 
 // Вызов функции подключения к серверу БД
 $connection = connectDB();
 
-// Запрос на удаление данных
-// UPDATE - обновить, SET - установлен, WHERE - где.
-$update = "UPDATE contacts SET favorite = $favorite WHERE id = $id";
-$res_update = mysqli_query($connection, $update);
+$id = $_POST['id'];
+// print_r($id);
+$name = $_POST['name'];
+$subname = $_POST['subname'];
+$birthday = $_POST['birthday'];
+$phone = $_POST['phone'];
 
+$update =  "UPDATE contacts SET name = '$name', subname = '$subname', birthday = '$birthday', phone = '$phone' WHERE id = '$id'";
+$res_update = mysqli_query($connection, $update);
 
 if ($res_update) {
     //редирект 

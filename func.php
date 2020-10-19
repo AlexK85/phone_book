@@ -1,17 +1,17 @@
 <?php
 
-function renderContact($contact)
+function renderContact($contact, $number)
 {
 
   return '<tr class="row-clear">
-            <td>' . $contact['id'] . '</td> 
+            <td>' . $number . '</td> 
             <td>' . $contact['name'] . '</td>
             <td>' . $contact['subname'] . '</td>
             <td>' . $contact['birthday'] . '</td>
             <td>' . $contact['phone'] . '</td>
-            <td>' . renderFavorite($contact['favorite']) . '</td>
+            <td>' . renderLinkFavorite((bool)$contact['favorite'], $contact['id']) . '</td>
             <td>
-              <button name="edit">Править</button>
+               <a class="edit" href="updated_data.php?id=' . $contact['id'] . '">Изменить</a>
             </td>
             <td>
               <a href="delete_contacts.php?id=' . $contact['id'] . '" class="button-del">Удалить</a>
@@ -19,16 +19,12 @@ function renderContact($contact)
           </tr>';
 }
 
-function renderFavorite($isFavorite)
+function renderLinkFavorite($isFavorite, $id)
 {
-  $checked = '';
   if ($isFavorite) {
-    $checked = 'checked';
+    $link = '<a class="favorite" href="favorite_add_contact.php?favorite=0&id=' . $id . '">⭐️</a>';
+  } else {
+    $link = '<a class="favorite" href="favorite_add_contact.php?favorite=1&id=' . $id . '">☆</a>';
   }
-  return '<a href="favorite_add_contact.php?favorite=1">
-            <div class="checkbox">
-              <input id="check" type="checkbox" name="check" value="check"' . $checked . '>
-              <label for="check">☆</label>
-            </div>
-          </a>';
+  return $link;
 }

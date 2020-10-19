@@ -102,5 +102,10 @@ input[type="checkbox"]:checked + label:before {
 
 .add_contact:hover {
   background-color: rgb(160, 148, 148);
+}
 
+.favorite {
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
 }
