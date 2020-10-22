@@ -1,5 +1,6 @@
 <?php
 require_once "db.php";
+require_once "func.php";
 
 // Обработчик 
 
@@ -10,32 +11,39 @@ $connection = connectDB();
 $name = $_POST['name'];
 $subname = $_POST['subname'];
 $birthday = $_POST['birthday'];
-$phone = $_POST['phone'];
-// $to = sprintf(
-//     "%s (%s) %s-%s-%s",
-//     substr($phone, 0, 1),
-//     substr($phone, 1, 3),
-//     substr($phone, 4, 3),
-//     substr($phone, 7, 2),
-//     substr($phone, 9)
-// );
-// echo $to;
+// $phone = $_POST['phone'];
+$phoneNumber = $_POST['phone'];
 
+//Перед тем как на валидность проверять - скорректируем номер телефона и результат присвоим новой переменной $phoneNumber
+$phoneNumber = correctPhoneNumber($phoneNumber);
 
-// Запрос на добавление данных
-$insert = "INSERT INTO contacts (name, subname, birthday, phone) VALUES ('$name', '$subname', '$birthday', '$phone')";
-$res_insert = mysqli_query($connection, $insert);
+// Проверка на валидность
+// echo $phoneNumber; die; 
 
-// $update = "UPDATE contacts SET id = 'id' WHERE id = '$id';
-// $res_update = mysqli_query($connection, $update);
+//Проверка на валидацию (заглушка)
+if (!isValidPhoneNumber($phoneNumber)) { // Если не валидный тел. номер, то вывести...
+    // Как то вывести предупреждение....  
+    // Опять Вывести форму клиенту + вывести предупреждение в виде текста в красной рамке
 
-if ($res_insert) {
-    //редирект 
-    header('Location: /phone_book/index.php', true, 303);
+    $error = "Не валидный номер ($phoneNumber). Телефон должен быть в формате 79045327579";
+    printHeader();
+    // Параметры в этой функции от переменных, которые выше находятся на этой странице!
+    showClientForm($name, $subname, $birthday, '', $error);
+    printFooter();
 } else {
-    echo 'Error';
-    echo mysqli_error($connection);
-}
+    // echo 'Телефон валидный: ' . $phoneNumber;
 
-//Закрываем подключение
-// mysqli_close($db);
+    // стандартные действия по записи в базу / изменению в базе
+
+    // Запрос на добавление данных
+    $insert = "INSERT INTO contacts (name, subname, birthday, phone) VALUES ('$name', '$subname', '$birthday', '$phoneNumber')";
+    $res_insert = mysqli_query($connection, $insert);
+
+    if ($res_insert) {
+        //редирект 
+        header('Location: /phone_book/index.php', true, 303);
+    } else {
+        echo 'Error';
+        echo mysqli_error($connection);
+    }
+}
