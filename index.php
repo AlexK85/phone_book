@@ -74,8 +74,8 @@ $contacts = $result->fetch_all(MYSQLI_ASSOC);
         <th>Удалить</th>
       </tr>
       <?php
+          // $count - счётчик, который передаётся параметром $number
           $count = 1;
-          // коммент
           foreach ($contacts as $contact) {
           echo renderContact($contact, $count++);
           }

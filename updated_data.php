@@ -36,19 +36,19 @@ $contact = mysqli_fetch_assoc($result);
             </li>
             <li>
                 <label for="name">Имя:</label>
-                <input type="text" name="name" value="<?= $contact['name'] ?>">
+                <input type="text" name="name" value="<?= $contact['name'] ?>" required>
             </li>
             <li>
                 <label for="surname">Фамилия:</label>
-                <input type="text" name="subname" value="<?= $contact['subname'] ?>">
+                <input type="text" name="subname" value="<?= $contact['subname'] ?>" required>
             </li>
             <li>
                 <label for="date">Дата рождения:</label>
-                <input type="date" name="birthday" value="<?= $contact['birthday'] ?>">
+                <input type="date" name="birthday" value="<?= $contact['birthday'] ?>" required>
             </li>
             <li>
                 <label for="phone">Номер телефона:</label>
-                <input type="tel" name="phone" value="<?= $contact['phone'] ?>">
+                <input type="tel" name="phone" placeholder="+7(999)999-99-99" value="<?= $contact['phone'] ?>" required>
             </li>
 
             <button type="submit" name="submit" value="Изменить">Изменить</button>
