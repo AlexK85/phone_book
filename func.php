@@ -1,5 +1,6 @@
 <?php
 
+// <<<<<<<  Передаёт данные в INDEX.PHP 
 function renderContact($contact, $number)
 {
 
@@ -7,7 +8,7 @@ function renderContact($contact, $number)
             <td>' . $number . '</td> 
             <td>' . $contact['name'] . '</td>
             <td>' . $contact['subname'] . '</td>
-            <td>' . $contact['birthday'] . '</td>
+            <td>' . date('d.m.Y', strtotime($contact['birthday'])) . '</td>
             <td>' . $contact['phone'] . '</td>
             <td>' . renderLinkFavorite((bool)$contact['favorite'], $contact['id']) . '</td>
             <td>
@@ -28,9 +29,48 @@ function renderLinkFavorite($isFavorite, $id)
   }
   return $link;
 }
+// Передаёт данные в INDEX.PHP >>>>>
 
 
-// Функция для коррекции номеров
+
+
+
+// <<<<<<<  Передаёт данные в HANDLER_ADD_CONTACT.PHP
+
+// Функция для коррекции ИМЕНИ
+function correctName($userName)
+{
+  // удалить из строки все не нужные символы кроме букв
+  $userName = preg_replace('/[^a-zA-Zа-яА-Я ]/u', '', $userName);
+  // $userName = preg_replace('#\d#', '', $userName);
+  // Спереди должна быть только буква верхнего регистра
+  // .....?!?!?
+  return $userName;
+}
+
+// Функция для коррекции ФАМИЛИИ
+function correctSubname($userSubname)
+{
+  // удалить из строки все не нужные символы кроме букв
+  $userSubname = preg_replace('/[^a-zA-Zа-яА-Я ]/u', '', $userSubname);
+  // .....?!?!?
+
+  return $userSubname;
+}
+
+// Функция для коррекции ДАТЫ РОЖДЕНИЯ
+function correctBirthday($userBirthday)
+{
+  // Поменять формат ДАТЫ 
+  // $userBirthday = date('d.m.Y', strtotime($userBirthday));
+  // $userBirthday = date_create_from_format('d.m.Y', '16.10.1985');
+
+  // .....?!?!?
+
+  return $userBirthday;
+}
+
+// Функция для коррекции НОМЕРА ТЕЛЕФОНА
 function correctPhoneNumber($phoneNumber)
 {
   // удалить из строки все не нужные символы
@@ -46,7 +86,35 @@ function correctPhoneNumber($phoneNumber)
   return $phoneNumber;
 }
 
-// Пишем функцию, которая будет проверять на валидность
+
+// <<<<<<<<<  Функцию, которая будет ПРОВЕРЯТЬ НА ВАЛИДНОСТЬ введённые данные: ИМЯ
+function isValidName($userName)
+{
+  if ($userName === '') {  // ....?
+    return false; // не валидный
+  }
+  return true;
+}
+
+// Функцию, которая будет ПРОВЕРЯТЬ НА ВАЛИДНОСТЬ введённые данные: ФАМИЛИЯ
+function isValidSubname($userSubname)
+{
+  if ($userSubname === '') {  //
+    return false; // не валидный
+  }
+  return true;
+}
+
+// Функцию, которая будет ПРОВЕРЯТЬ НА ВАЛИДНОСТЬ введённые данные: ДАТА РОЖДЕНИЯ
+function isValidBirthday($birthday)
+{
+  if ($birthday === '') {  // если длиина строки не равна 12 (или больше или меньше)
+    return false; // не валидный
+  }
+  return true;
+}
+
+// Функцию, которая будет ПРОВЕРЯТЬ НА ВАЛИДНОСТЬ введённые данные: НАМЕРА ТЕЛЕФОНА
 function isValidPhoneNumber($phoneNumber)
 {
   if (strlen($phoneNumber) !== 12) {  // если длиина строки не равна 12 (или больше или меньше)
@@ -54,15 +122,21 @@ function isValidPhoneNumber($phoneNumber)
   }
   return true;
 }
+// Передаёт данные в HANDLER_ADD_CONTACT.PHP >>>>>>>>>
+
+
+
+
+// <<<<<<<<<  Передаёт данные в FORM_ADD_CONTACT.PHP
 
 // Выводит сообщение, если НЕ валидный номер
-function showClientForm($name = '', $subname = '', $birthday = '', $phoneNumber = '', $error = '')
+function showClientForm($userName = '', $subname = '', $birthday = '', $phoneNumber = '', $error = '')
 {
   $form = '<form class="form" action="handler_add_contact.php" method="post">
                 <ul class="data-list">
                     <li>
                       <label for="name">Имя:</label>
-                      <input type="text" name="name" value="' . $name . '" autofocus required>
+                      <input type="text" name="name" value="' . $userName . '" autofocus required>
                     </li>
                     <li>
                       <label for="surname">Фамилия:</label>
@@ -87,13 +161,14 @@ function showClientForm($name = '', $subname = '', $birthday = '', $phoneNumber 
   } else {
     $errorMessage = '';
   }
-  
+
   echo $form;
   echo $errorMessage;
 }
 
-
-function printHeader() {
+// Вёрстка верхней части формы
+function printHeader()
+{
   echo '<!DOCTYPE html>
           <html lang="en">
           <head>
@@ -105,7 +180,10 @@ function printHeader() {
         <body>';
 }
 
-function printFooter() {
+// Вэрстка нижней части формы
+function printFooter()
+{
   echo '</body>
         </html>';
 }
+// Передаёт данные в FORM_ADD_CONTACT.PHP >>>>>>>>>>
