@@ -11,32 +11,66 @@ $connection = connectDB();
 $name = $_POST['name'];
 $subname = $_POST['subname'];
 $birthday = $_POST['birthday'];
-// $phone = $_POST['phone'];
-$phoneNumber = $_POST['phone'];
+$phone = $_POST['phone'];
+
 
 //Перед тем как на валидность проверять - скорректируем номер телефона и результат присвоим новой переменной $phoneNumber
-$phoneNumber = correctPhoneNumber($phoneNumber);
+$name = correctName($name);
+$subname = correctSubname($subname);
+$birthday = correctBirthday($birthday);
+$phone = correctPhoneNumber($phone);
 
-// Проверка на валидность
-// echo $phoneNumber; die; 
 
-//Проверка на валидацию (заглушка)
-if (!isValidPhoneNumber($phoneNumber)) { // Если не валидный тел. номер, то вывести...
+
+//Проверка на валидацию ВВЕДЁНОГО ИМЕНИ, ФАМИЛИЮ, ДАТУ РОЖДЕНИЯ, НОМЕРА ТЕЛЕФОНА (заглушка)
+if (!isValidname($name)) { // Если не валидное имя, то вывести...
     // Как то вывести предупреждение....  
     // Опять Вывести форму клиенту + вывести предупреждение в виде текста в красной рамке
 
-    $error = "Не валидный номер ($phoneNumber). Телефон должен быть в формате 79045327579";
+    $error = "Не валидное имя ($name).";
+    printHeader();
+    // Параметры в этой функции от переменных, которые выше находятся на этой странице!
+    showClientForm('', $subname, $birthday, $phone, $error);
+    printFooter();
+    die;
+}
+if (!isValidSubname($subname)) {
+    // Как то вывести предупреждение....  
+    // Опять Вывести форму клиенту + вывести предупреждение в виде текста в красной рамке
+
+    $error = "Не валидная фамилия ($subname).";
+    printHeader();
+    // Параметры в этой функции от переменных, которые выше находятся на этой странице!
+    showClientForm($name, '', $birthday, $phone, $error);
+    printFooter();
+    die;
+}
+if (!isValidBirthday($birthday)) {
+    // Как то вывести предупреждение....  
+    // Опять Вывести форму клиенту + вывести предупреждение в виде текста в красной рамке
+
+    $error = "Не валидная дата рождения ($birthday).";
+    printHeader();
+    // Параметры в этой функции от переменных, которые выше находятся на этой странице!
+    showClientForm($name, $subname, '', $phone, $error);
+    printFooter();
+    die;
+}
+if (!isValidPhoneNumber($phone)) {
+    // Как то вывести предупреждение....  
+    // Опять Вывести форму клиенту + вывести предупреждение в виде текста в красной рамке
+
+    $error = "Не валидный номер ($phone). Телефон должен быть в формате 79045327579";
     printHeader();
     // Параметры в этой функции от переменных, которые выше находятся на этой странице!
     showClientForm($name, $subname, $birthday, '', $error);
     printFooter();
+    die;
 } else {
     // echo 'Телефон валидный: ' . $phoneNumber;
 
-    // стандартные действия по записи в базу / изменению в базе
-
     // Запрос на добавление данных
-    $insert = "INSERT INTO contacts (name, subname, birthday, phone) VALUES ('$name', '$subname', '$birthday', '$phoneNumber')";
+    $insert = "INSERT INTO contacts (name, subname, birthday, phone) VALUES ('$name', '$subname', '$birthday', '$phone')";
     $res_insert = mysqli_query($connection, $insert);
 
     if ($res_insert) {
