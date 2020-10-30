@@ -42,8 +42,6 @@ function correctName($userName)
 {
   // удалить из строки все не нужные символы кроме букв
   $userName = preg_replace('/[^a-zA-Zа-яА-Я ]/u', '', $userName);
-  // $userName = preg_replace('#\d#', '', $userName);
-  // Спереди должна быть только буква верхнего регистра
   // .....?!?!?
   return $userName;
 }
@@ -54,7 +52,6 @@ function correctSubname($userSubname)
   // удалить из строки все не нужные символы кроме букв
   $userSubname = preg_replace('/[^a-zA-Zа-яА-Я ]/u', '', $userSubname);
   // .....?!?!?
-
   return $userSubname;
 }
 
@@ -64,9 +61,7 @@ function correctBirthday($userBirthday)
   // Поменять формат ДАТЫ 
   // $userBirthday = date('d.m.Y', strtotime($userBirthday));
   // $userBirthday = date_create_from_format('d.m.Y', '16.10.1985');
-
   // .....?!?!?
-
   return $userBirthday;
 }
 
@@ -134,10 +129,13 @@ function isValidPhoneNumber($phoneNumber)
 // <<<<<<<<<  Передаёт данные в FORM_ADD_CONTACT.PHP
 
 // Выводит сообщение, если НЕ валидный номер
-function showClientForm($userName = '', $subname = '', $birthday = '', $phoneNumber = '', $error = '')
+function showClientForm($id = '', $userName = '', $subname = '', $birthday = '', $phoneNumber = '', $error = '')
 {
   $form = '<form class="form" action="handler_add_contact.php" method="post">
                 <ul class="data-list">
+                    <li>
+                      <input type="hidden" name="id" value="' . $id . '">
+                    </li>
                     <li>
                       <label for="name">Имя:</label>
                       <input type="text" name="name" value="' . $userName . '" autofocus required>

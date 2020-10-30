@@ -8,35 +8,6 @@ if (!empty($_POST)) {
 // Подключаем файл с функциями
 require_once "func.php";
 
-// 1 Способ как решить задачу
-// Вопрос: как очистить строку от не нужных символов?
-// str_replace — Заменяет все вхождения строки поиска на строку замены
-// Далее ПРОТЕСТИРУЕМ РАБОТУ ФУНКЦИИ 
-
-// $phoneNumber = "8 (904) 532+75-!.79a";
-
-// $incorrectChars = [
-//     '(',')','+','-','.','_',' ','!','a'     
-// ];
-
-// // foreach($incorrectChars as $char) {
-//     $phoneNumber = str_replace($incorrectChars, '', $phoneNumber);
-// // }
-
-// echo $phoneNumber;
-
-// 2 Способ решения задачи
-// Вопрос: регулярные выражения - отрицание
-// preg_replace — Выполняет поиск и замену по регулярному выражению
-// Далее ПРОТЕСТИРУЕМ РАБОТУ ФУНКЦИИ 
-
-// $phoneNumber = "8 (904) 532+75-!.79a";
-
-// $phoneNumber = preg_replace('#\D#', '', $phoneNumber);
-
-// echo $phoneNumber;
-
-
 // Наши действия: 
 // 1. Мы берём телефон из формы
 // 2. Корректируем его в нашей функции correctPhoneNumber($phoneNumber)
