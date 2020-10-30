@@ -14,7 +14,7 @@ $birthday = $_POST['birthday'];
 $phone = $_POST['phone'];
 
 
-//Перед тем как на валидность проверять - скорректируем номер телефона и результат присвоим новой переменной $phoneNumber
+//Перед тем как на валидность проверять - скорректируем номер телефона и результат присвоим новой переменной 
 $name = correctName($name);
 $subname = correctSubname($subname);
 $birthday = correctBirthday($birthday);
@@ -30,7 +30,7 @@ if (!isValidname($name)) { // Если не валидное имя, то выв
     $error = "Не валидное имя ($name).";
     printHeader();
     // Параметры в этой функции от переменных, которые выше находятся на этой странице!
-    showClientForm('', $subname, $birthday, $phone, $error);
+    showClientForm('', '', $subname, $birthday, $phone, $error);
     printFooter();
     die;
 }
@@ -41,7 +41,7 @@ if (!isValidSubname($subname)) {
     $error = "Не валидная фамилия ($subname).";
     printHeader();
     // Параметры в этой функции от переменных, которые выше находятся на этой странице!
-    showClientForm($name, '', $birthday, $phone, $error);
+    showClientForm('', $name, '', $birthday, $phone, $error);
     printFooter();
     die;
 }
@@ -52,7 +52,7 @@ if (!isValidBirthday($birthday)) {
     $error = "Не валидная дата рождения ($birthday).";
     printHeader();
     // Параметры в этой функции от переменных, которые выше находятся на этой странице!
-    showClientForm($name, $subname, '', $phone, $error);
+    showClientForm('', $name, $subname, '', $phone, $error);
     printFooter();
     die;
 }
@@ -63,7 +63,7 @@ if (!isValidPhoneNumber($phone)) {
     $error = "Не валидный номер ($phone). Телефон должен быть в формате 79045327579";
     printHeader();
     // Параметры в этой функции от переменных, которые выше находятся на этой странице!
-    showClientForm($name, $subname, $birthday, '', $error);
+    showClientForm('', $name, $subname, $birthday, '', $error);
     printFooter();
     die;
 } else {
