@@ -106,7 +106,7 @@ function isValidBirthday($birthday)
   $timestamp = strtotime($birthday); // Преобразуем дату в числовую метку времени 
   $year = (int)date('Y', $timestamp); // Получаем ВВЕДЁННЫЙ ГОД и преобразуем его в ЧИСЛО
   $current_year = (int)date('Y', time()); // Получаем текущий год и преобразуем его в ЧИСЛО
-
+  
   if ($year <= 1900 || $year > $current_year) {
     return false; // не валидный
   }
