@@ -6,11 +6,24 @@ require_once "db.php";
 require_once "func.php";
 
 $connection = connectDB();
-$sql = "SELECT * FROM contacts";
-$result = $connection->query($sql);
-// В $contacts будет аcсоциативный массив
-$contacts = $result->fetch_all(MYSQLI_ASSOC);
 
+
+// $sql = "SELECT * FROM contacts";
+// $result = $connection->query($sql);
+// // В $contacts будет аcсоциативный массив
+// $contacts = $result->fetch_all(MYSQLI_ASSOC);
+
+
+// Вывод содержимого таблицы методом fetchAll()
+// PDO 
+try {
+  $sql = "SELECT * FROM contacts";
+  $statement = $connection->query($sql);
+
+  $contacts = $statement->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  echo "Ошибка выполнения запроса: " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>
@@ -74,11 +87,11 @@ $contacts = $result->fetch_all(MYSQLI_ASSOC);
         <th>Удалить</th>
       </tr>
       <?php
-          // $count - счётчик, который передаётся параметром $number
-          $count = 1;
-          foreach ($contacts as $contact) {
-          echo renderContact($contact, $count++);
-          }
+      // $count - счётчик, который передаётся параметром $number
+      $count = 1;
+      foreach ($contacts as $contact) {
+        echo renderContact($contact, $count++);
+      }
       ?>
     </table>
   </div>

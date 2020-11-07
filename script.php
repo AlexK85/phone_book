@@ -1,4 +1,5 @@
 <?php 
+// Для консольного скрипта
    echo "Введите фамилию: ";
    $lastname = trim(fgets(STDIN));
 

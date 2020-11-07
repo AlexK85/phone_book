@@ -1,6 +1,6 @@
 <?php
 
-if (!isset($_GET['id'])) { 
+if (!isset($_GET['id'])) {
     die('Не установлен параметр id');
 }
 
@@ -14,17 +14,23 @@ require_once "db.php";
 $connection = connectDB();
 
 // Запрос на удаление данных
-$delete = "DELETE FROM contacts WHERE id = $id";
-$res_delete = mysqli_query($connection, $delete);
+// $delete = "DELETE FROM contacts WHERE id = $id";
+// $res_delete = mysqli_query($connection, $delete);
+
+// PDO 
+$sql = "DELETE FROM contacts WHERE id = :id";
+$statement = $connection->prepare($sql);
+$countDeletedRow = $statement->execute(
+    [
+        ':id' => $id
+    ]
+);
 
 
-if ($res_delete) {
-   //редирект 
-   header('Location: /phone_book/index.php', true, 303);
+if ($countDeletedRow > 0) {
+    //редирект 
+    header('Location: /phone_book/index.php', true, 303);
 } else {
     echo 'Error';
     echo mysqli_error($connection);
 }
-
-
-
