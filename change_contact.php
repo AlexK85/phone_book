@@ -66,7 +66,7 @@ if (!isValidPhoneNumber($phone)) {
     printFooter();
     die;
 } else {
-
+    // Запрос на изменение данных
     $update =  "UPDATE contacts SET name = '$name', subname = '$subname', birthday = '$birthday', phone = '$phone' WHERE id = '$id'";
     $res_update = mysqli_query($connection, $update);
 
@@ -78,3 +78,4 @@ if (!isValidPhoneNumber($phone)) {
         echo mysqli_error($connection);
     }
 }
+
