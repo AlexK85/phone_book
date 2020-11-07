@@ -70,10 +70,30 @@ if (!isValidPhoneNumber($phone)) {
     // echo 'Телефон валидный: ' . $phoneNumber;
 
     // Запрос на добавление данных
-    $insert = "INSERT INTO contacts (name, subname, birthday, phone) VALUES ('$name', '$subname', '$birthday', '$phone')";
-    $res_insert = mysqli_query($connection, $insert);
+    // $insert = "INSERT INTO contacts (name, subname, birthday, phone) VALUES ('$name', '$subname', '$birthday', '$phone')";
+    // $res_insert = mysqli_query($connection, $insert);
 
-    if ($res_insert) {
+    // if ($res_insert) {
+    //     //редирект 
+    //     header('Location: /phone_book/index.php', true, 303);
+    // } else {
+    //     echo 'Error';
+    //     echo mysqli_error($connection);
+    // }
+
+    // PDO 
+    $sql = "INSERT INTO contacts (name, subname, birthday, phone) VALUES (:name, :subname, :birthday, :phone)";
+    $statement = $connection->prepare($sql);
+    $contacts = $statement->execute(
+        [
+            ':name' => $name,
+            ':subname' => $subname,
+            ':birthday' => $birthday,
+            ':phone' => $phone
+        ]
+    );
+
+    if ($contacts) {
         //редирект 
         header('Location: /phone_book/index.php', true, 303);
     } else {
