@@ -39,10 +39,16 @@
     - При редактировании контакта должна происходить волидация !
 
 ### Задача 5  29.10.2020
-    - Поменял процедурный метод соединение между PHP и сервером БД на PDO 
+    - Поменял процедурный метод соединение между PHP и сервером БД на PDO !
         -db.php !
         -index.php !
         -delete_contacts.php !
+        -handler_add_contacts.php !
+        -change_contact.php !
+        -updated_data.php !
+        -favorite_add_contact.php !
+        -deleting_invalid_contacts.php !
+
     - Поправить старый код
 
     - написать скрипт, который удалит не валидные записи. !
