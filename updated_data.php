@@ -9,11 +9,23 @@ $connection = connectDB();
 $id = $_GET['id'];
 
 // По данному идентификатору находим строку
-$query =  "SELECT * FROM contacts WHERE id = '$id'";
-$result = mysqli_query($connection, $query);
+// $query =  "SELECT * FROM contacts WHERE id = '$id'";
+// $result = mysqli_query($connection, $query);
 
 //Для преобразования в обычный массив
-$contact = mysqli_fetch_assoc($result);
+// $contact = mysqli_fetch_assoc($result);
+
+// PDO 
+$sql = "SELECT * FROM contacts WHERE id = :id";
+$statement = $connection->prepare($sql);
+$statement->execute(
+    [
+        ':id' => $id
+    ]
+);
+$contact = $statement->fetch(PDO::FETCH_ASSOC);
+// print_r($contact);
+// die;
 
 ?>
 

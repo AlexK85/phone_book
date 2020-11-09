@@ -67,15 +67,37 @@ if (!isValidPhoneNumber($phone)) {
     die;
 } else {
     // Запрос на изменение данных
-    $update =  "UPDATE contacts SET name = '$name', subname = '$subname', birthday = '$birthday', phone = '$phone' WHERE id = '$id'";
-    $res_update = mysqli_query($connection, $update);
+    // $update =  "UPDATE contacts SET name = '$name', subname = '$subname', birthday = '$birthday', phone = '$phone' WHERE id = '$id'";
+    // $res_update = mysqli_query($connection, $update);
 
-    if ($res_update) {
-        //редирект 
+    // if ($res_update) {
+    //редирект 
+    //     header('Location: /phone_book/index.php', true, 303);
+    // } else {
+    //     echo 'Error';
+    //     echo mysqli_error($connection);
+    // }
+
+    // PDO 
+    $sql = "UPDATE contacts SET name = :name, subname = :subname, birthday = :birthday, phone = :phone WHERE id = :id";
+    $statement = $connection->prepare($sql);
+    $update = $statement->execute(
+        [
+            ':id' => $id,
+            ':name' => $name,
+            ':subname' => $subname,
+            ':birthday' => $birthday,
+            ':phone' => $phone
+        ]
+    );
+    // $contact = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+    if ($update) {
+        // редирект 
         header('Location: /phone_book/index.php', true, 303);
     } else {
         echo 'Error';
         echo mysqli_error($connection);
     }
 }
-

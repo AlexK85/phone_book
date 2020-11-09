@@ -17,12 +17,29 @@ $connection = connectDB();
 
 // Запрос на удаление данных
 // UPDATE - обновить, SET - установлен, WHERE - где.
-$update = "UPDATE contacts SET favorite = $favorite WHERE id = $id";
-$res_update = mysqli_query($connection, $update);
+// $update = "UPDATE contacts SET favorite = $favorite WHERE id = $id";
+// $res_update = mysqli_query($connection, $update);
+
+// if ($res_update) {
+//редирект 
+//     header('Location: /phone_book/index.php', true, 303);
+// } else {
+//     echo 'Error';
+//     echo mysqli_error($connection);
+// }
 
 
-if ($res_update) {
-    //редирект 
+// PDO
+$sql = "UPDATE contacts SET favorite = $favorite WHERE id = :id";
+$statement = $connection->prepare($sql);
+$addFavorite = $statement->execute(
+    [
+        ':id' => $id
+    ]
+);
+
+if ($addFavorite) {
+    // редирект 
     header('Location: /phone_book/index.php', true, 303);
 } else {
     echo 'Error';
